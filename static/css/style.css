@@ -1,0 +1,27 @@
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    background-color: (255, 255, 255);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.section img {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+.section .text {
+    max-width: 600px;
+    color: black
+}
+
