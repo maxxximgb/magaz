@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d030e420-cd72-4fc2-aea2-c48cc504a5be" name="Changes" comment="Добавление base.html">
-      <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+    <list default="true" id="d030e420-cd72-4fc2-aea2-c48cc504a5be" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/catalog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/production.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/production.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +58,14 @@
       <option name="project" value="LOCAL" />
       <updated>1743023653481</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Добавление файлов">
+      <created>1743199698252</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743199698252</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -72,6 +81,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Добавление base.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавление base.html" />
+    <MESSAGE value="Добавление файлов" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавление файлов" />
   </component>
 </project>
