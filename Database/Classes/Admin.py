@@ -1,8 +1,6 @@
-import datetime
-import sqlalchemy
 import sqlalchemy.orm as orm
 import sqlalchemy.types as satypes
-from Database.Manager import Base
+from Database.Classes.Manager import Base
 
 class Admin(Base):
     __tablename__ = 'Admins'
