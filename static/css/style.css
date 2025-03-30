@@ -1,6 +1,12 @@
-.container {
-    width: 80%;
-    margin: 20px auto;
+.container > * {
+    display: block;
+    margin: 0 auto;
+}
+
+
+.icon {
+    width: 10%;
+    height: 10%;
 }
 
 .section {
@@ -9,7 +15,6 @@
     background-color: (255, 255, 255);
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 10px;
     color: white;
 }
 
