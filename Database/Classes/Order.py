@@ -1,7 +1,9 @@
 import sqlalchemy
 import sqlalchemy.orm as orm
 import sqlalchemy.types as satypes
-from Database.Classes.Manager import Base
+from .Product import Product
+from .Promocode import Promocode
+from Database.Engine.Engine import Base
 
 class Order(Base):
     __tablename__ = 'Orders'

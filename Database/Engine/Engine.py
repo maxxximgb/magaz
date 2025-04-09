@@ -2,7 +2,7 @@ import sqlalchemy.orm as orm
 import sqlalchemy
 
 __factory = None
-SqlAlchemyBase = sqlalchemy.orm.declarative_base()
+Base = sqlalchemy.orm.declarative_base()
 
 
 def global_init():
@@ -11,12 +11,12 @@ def global_init():
     if __factory:
         return
 
-    conn_str = f'sqlite:///Database/database.sqlite?check_same_thread=False'
+    conn_str = f'sqlite:///Database/Database.sqlite?check_same_thread=False'
 
     engine = sqlalchemy.create_engine(conn_str, echo=False)
     __factory = orm.sessionmaker(bind=engine)
 
-    SqlAlchemyBase.metadata.create_all(engine)
+    Base.metadata.create_all(engine)
 
 def create_session() -> orm.Session:
     global __factory

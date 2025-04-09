@@ -1,10 +1,10 @@
 import datetime
 import sqlalchemy.orm as orm
 import sqlalchemy.types as satypes
-from Database.Classes.Manager import Base
+from Database.Engine.Engine import Base
 
 class Promocode(Base):
     __tablename__ = 'Promocodes'
     id: orm.Mapped[int] = orm.mapped_column(primary_key=True, autoincrement=True)
     name: orm.Mapped[str] = orm.mapped_column(satypes.String(30))
-    expiration_date: orm.Mapped[satypes.DateTime] = orm.mapped_column(default=datetime.datetime.now())
+    expiration_date: orm.Mapped[datetime.datetime] = orm.mapped_column(default=datetime.datetime.now())

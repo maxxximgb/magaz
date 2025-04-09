@@ -1,7 +1,8 @@
 import sqlalchemy
 import sqlalchemy.orm as orm
 import sqlalchemy.types as satypes
-from Database.Classes.Manager import Base
+from Database.Engine.Engine import Base
+from Database.Classes.Order import Order
 
 class Product(Base):
     __tablename__ = 'Products'
@@ -9,4 +10,4 @@ class Product(Base):
     name: orm.Mapped[str] = orm.mapped_column(satypes.String(30))
     weight: orm.Mapped[str] = orm.mapped_column(satypes.String(30))
     order_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('Orders.id'))
-    order: orm.Mapped["Order"] = orm.relationship("Order", back_populates="products")
+    order: orm.Mapped[Order] = orm.relationship("Order", back_populates="products")
