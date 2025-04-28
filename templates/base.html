@@ -5,22 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="icon" href="/static/img/logo.png">
     <title>{{title}}</title>
 </head>
 <body>
 <header class="d-flex justify-content-between align-items-center p-3 bg-light shadow">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary w-100">
         <div class="container-fluid">
-            <img src="/static/img/logo.png" class="icon">
+            <a class="navbar-brand" href="/">
+                <img src="/static/img/logo.png" alt="Логотип компании">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link" href='/'>Главная</a>
                     </li>
@@ -33,20 +36,36 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/buy">Каталог</a>
                     </li>
-
                 </ul>
+                <div class="d-flex ms-auto">
+                    <a href="/login" class="btn btn-outline-secondary me-2">
+                        <i class="bi bi-person"></i> Профиль
+                    </a>
+                    <a href="/cart" class="btn btn-outline-primary position-relative">
+                        <i class="bi bi-cart"></i> Корзина
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                0
+                            </span>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 </header>
-<main>
+
+<main class="container mt-4">
     {% block content %}
     {% endblock %}
 </main>
-<footer>
-    <p>Номер лицензии</p>
-    <p>Название организации</p>
-    <p>Все права защищены</p>
-    <p>Условия использования</p>
-    <p>Политика конфиденциальности</p>
+
+<footer class="bg-light py-3 mt-4">
+    <div class="container">
+        <p class="mb-1">Номер лицензии</p>
+        <p class="mb-1">Название организации</p>
+        <p class="mb-1">© 2023 Все права защищены</p>
+        <p class="mb-1"><a href="#" class="text-decoration-none">Условия использования</a></p>
+        <p class="mb-0"><a href="#" class="text-decoration-none">Политика конфиденциальности</a></p>
+    </div>
 </footer>
+</body>
+</html>

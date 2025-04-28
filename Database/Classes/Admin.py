@@ -2,6 +2,7 @@ import sqlalchemy.orm as orm
 import sqlalchemy.types as satypes
 from Database.Engine.Engine import Base
 
+
 class Admin(Base):
     __tablename__ = 'Admins'
     id: orm.Mapped[int] = orm.mapped_column(primary_key=True, autoincrement=True)
