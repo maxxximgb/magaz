@@ -1,0 +1,67 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<div class="container">
+    <form method="post" enctype="multipart/form-data">
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-6 text-center">
+                <h4 class="mb-2">Изображение товара</h4>
+                <img class="img-fluid rounded" id="productImage" src="/static/img/logo.png" style="max-height: 300px">
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-6">
+                <label for="image" id="imageField" class="btn btn-primary w-100">
+                    Загрузить файл
+                </label>
+                <input type="file" id="image" name="image" accept="image/*" class="d-none"
+                       onchange="onImageSelected(event)" required>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-6">
+                <label class="form-label">Название товара</label>
+                <input id="name" name="name" class="form-control form-control-lg" placeholder="Введите название"
+                       required>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-6">
+                <label class="form-label">Вес товара</label>
+                <input id="weight" name="weight" class="form-control form-control-lg"
+                       placeholder="Введите вес в граммах"
+                       required>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-6">
+                <label class="form-label">Цена товара</label>
+                <input id="price" name="price" type="number" class="form-control form-control-lg"
+                       placeholder="Введите цену за введенный вес" required>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-6">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="is_visible" name="is_visible" checked>
+                    <label class="form-check-label" for="is_visible">
+                        Продукт виден после создания в каталоге пользователей?
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 d-grid">
+                <button type="submit" class="btn btn-success btn-lg">Сохранить товар</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="/static/js/product_edit.js"></script>
+{% endblock %}

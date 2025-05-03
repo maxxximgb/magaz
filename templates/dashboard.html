@@ -1,0 +1,12 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<div class="container">
+  <div id="orders">
+    <button onclick="updateOrders()">Обновить заказы</button>
+    <div id="orderList"></div>
+  </div>
+</div>
+
+<script src="/static/js/dashboard.js"></script>
+{% endblock %}

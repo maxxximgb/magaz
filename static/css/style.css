@@ -30,3 +30,19 @@
     color: black
 }
 
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.alert-slide {
+    animation: slideIn 0.3s ease-out;
+    margin: 0.5rem;
+    max-width: 100%;
+}
+
+@media (min-width: 576px) {
+    .alert-slide {
+      max-width: 350px;
+    }
+}

@@ -1,15 +1,35 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form method="post">
-    <label for="login">Логин</label>
-    <input type="text" id="login" name="login" class="form-control" placeholder="Введите логин" required>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-4">
+            <form method="post" class="my-5">
+                <div class="form-group mb-4">
+                    <label for="login" class="form-label">Логин</label>
+                    <input type="text"
+                           id="login"
+                           name="login"
+                           class="form-control form-control-lg"
+                           placeholder="Введите логин"
+                           required>
+                </div>
 
-    <label for="password">Пароль</label>
-    <input type="password" id="password" name="password" class="form-control" placeholder="Введите пароль" required>
+                <div class="form-group mb-4">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input type="password"
+                           id="password"
+                           name="password"
+                           class="form-control form-control-lg"
+                           placeholder="Введите пароль"
+                           required>
+                </div>
 
-    <div class="d-grid gap-2">
-        <button type="submit" class="btn btn-primary">Войти</button>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary btn-lg">Войти</button>
+                </div>
+            </form>
+        </div>
     </div>
-</form>
+</div>
 {% endblock %}

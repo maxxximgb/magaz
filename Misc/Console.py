@@ -166,7 +166,9 @@ def runHook(app, *args, **kwargs):
     logger = logging.getLogger('werkzeug')
     for handler in logger.handlers:
         logger.removeHandler(handler)
-    fh = logging.FileHandler('server.log', encoding='UTF-8')
+    if not os.path.exists('Logs'):
+        os.mkdir('Logs')
+    fh = logging.FileHandler('Logs/server.log', encoding='UTF-8')
     fh.setLevel(logging.INFO)
     logger.addHandler(fh)
     running = True
@@ -182,7 +184,7 @@ def setHook(app: Flask):
     main_app = app
 
 
-def ConsoleWorker(app: Flask):
+def ConsoleWorker():
     while not running:
         time.sleep(0.1)
     print('Введите help для просмотра доступных команд')

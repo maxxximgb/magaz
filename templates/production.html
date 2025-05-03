@@ -1,23 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
-    <div class="section">
-        <img src='/static/img/mushrooms.jpg' alt="Корзина грибов">
-        <div class="text">
-            <h3>Этап №1.</h3>
-            <h2>Сбор грибов.</h2>
-            <p>Мы идем в лес и собираем грибы. Ничего необычного.</p>
+<div class="container py-5">
+    <div class="section row align-items-center mb-5">
+        <div class="col-12 col-md-6 mb-4 mb-md-0">
+            <img src='/static/img/mushrooms.jpg' class="img-fluid rounded shadow" alt="Корзина грибов">
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="ps-md-4">
+                <h3 class="text-primary">Этап №1.</h3>
+                <h2 class="mb-3">Сбор грибов.</h2>
+                <p class="lead text-muted">Мы идем в лес и собираем грибы. Ничего необычного.</p>
+            </div>
         </div>
     </div>
 
-    <div class="section">
-        <img src='/static/img/sale.png' alt="Продажа грибов">
-        <div class="text">
-            <h3>Этап №2.</h3>
-            <h2>Продажа грибов.</h2>
-            <p>Мы продаем собранные грибы Вам, наслаждаясь процессом и зарабатывая деньги.</p>
+    <div class="section row align-items-center mb-5">
+        <div class="col-12 col-md-6 order-md-2 mb-4 mb-md-0">
+            <img src='/static/img/sale.png' class="img-fluid rounded shadow" alt="Продажа грибов">
+        </div>
+        <div class="col-12 col-md-6 order-md-1">
+            <div class="pe-md-4 text-md-end">
+                <h3 class="text-primary">Этап №2.</h3>
+                <h2 class="mb-3">Продажа грибов.</h2>
+                <p class="lead text-muted">Мы продаем собранные грибы Вам, наслаждаясь процессом и зарабатывая деньги.</p>
+            </div>
         </div>
     </div>
 </div>
+
 {% endblock %}

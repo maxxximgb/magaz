@@ -4,6 +4,10 @@ import sqlalchemy
 __factory = None
 Base = sqlalchemy.orm.declarative_base()
 
+from Database.Classes.Admin import Admin
+from Database.Classes.Order import Order
+from Database.Classes.Product import Product
+from Database.Classes.Promocode import Promocode
 
 def global_init():
     global __factory

@@ -1,0 +1,11 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<div class="container">
+  <div id="products">
+    <a class="btn btn-outline-secondary" href="/admin/newProduct">Добавить продукт</a>
+    <div id="productList"></div>
+  </div>
+</div>
+<script src="/static/js/catalog_edit.js"></script>
+{% endblock %}
