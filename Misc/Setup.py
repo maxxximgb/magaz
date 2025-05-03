@@ -1,10 +1,10 @@
 # requirements_installer.py
-import sys
 import urllib.request
-from pathlib import Path
 from importlib.metadata import distributions, PackageNotFoundError
-from setuptools import setup
+from pathlib import Path
+
 from pkg_resources import working_set, Requirement
+from setuptools import setup
 
 
 class RequirementsInstaller:

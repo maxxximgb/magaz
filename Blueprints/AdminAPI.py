@@ -1,12 +1,12 @@
-import io
 import os.path
 
+from flask import session, jsonify, request, redirect
 from flask.blueprints import Blueprint
-from flask import session, jsonify, make_response, request, redirect
-from Database.Classes.Order import Order
-from Database.Classes.Product import Product
+
 import Database.Engine.Engine as engine
 import Misc.Templates as templates
+from Database.Classes.Order import Order
+from Database.Classes.Product import Product
 
 bpAdminApi = Blueprint('admin_api', __name__)
 dbSession = engine.create_session()
