@@ -13,7 +13,7 @@ class RequirementsInstaller:
 
     def _parse_requirements(self):
         if not self.requirements_file.exists():
-            raise FileNotFoundError("requirements.txt not found in module directory")
+            raise FileNotFoundError("requirements.txt не найден. Скачайте проект заново.")
 
         requirements = []
         with open(self.requirements_file, 'r') as f:
@@ -21,14 +21,13 @@ class RequirementsInstaller:
                 line = line.strip()
                 if line and not line.startswith(('#', '-')):
                     try:
-                        Requirement.parse(line)  # Валидация синтаксиса
+                        Requirement.parse(line)
                         requirements.append(line)
                     except ValueError:
-                        print(f"Ignoring invalid requirement: {line}")
+                        print(f"Игнорируем невалидную зависимость: {line}")
         return requirements
 
     def check(self):
-        """Проверяет соответствие версий пакетов"""
         missing = []
         for req in self.requirements:
             try:
@@ -38,7 +37,6 @@ class RequirementsInstaller:
         return missing
 
     def install(self):
-        """Устанавливает недостающие пакеты с учётом версий"""
         missing = self.check()
         if not missing:
             return True
