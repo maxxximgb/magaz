@@ -41,7 +41,6 @@ def newProduct():
     if request.method == 'GET':
         return templates.newProduct.render()
     elif request.method == 'POST':
-        print(int(request.form['price']) / int(request.form['minWeight']) * 1000)
         product = Product(
             name=request.form['name'],
             minWeight=int(request.form['minWeight']),

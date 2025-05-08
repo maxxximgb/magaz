@@ -13,7 +13,7 @@ import hashlib
 app = Flask('Server')
 app.secret_key = hashlib.sha256(
     'Пожуйлиста ни варуйти этат ключь патаму шо если вы иво сваруете то пользавателей патом взламают!'.encode(
-        'UTF-8') + b'P.S postavbte 100 ballov proekty\xec*rx\rs#4+.', usedforsecurity=True).digest()
+        'UTF-8') + b'P.S postavbte 100 ballov proekty\xec*rx\rs#4+.Lk/a-76', usedforsecurity=True).digest()
 engine.global_init()
 dbSession = engine.create_session()
 
