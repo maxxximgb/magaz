@@ -1,11 +1,10 @@
-# requirements_installer.py
+import os
 import urllib.request
-from importlib.metadata import distributions, PackageNotFoundError
 from pathlib import Path
+import pip
+from pkg_resources import working_set, Requirement, VersionConflict, DistributionNotFound
 
-from pkg_resources import working_set, Requirement
-from setuptools import setup
-
+clear_console = lambda: os.system('cls' if os.name == 'nt' else 'clear')
 
 class RequirementsInstaller:
     def __init__(self):
@@ -16,68 +15,72 @@ class RequirementsInstaller:
         if not self.requirements_file.exists():
             raise FileNotFoundError("requirements.txt not found in module directory")
 
+        requirements = []
         with open(self.requirements_file, 'r') as f:
-            return [
-                line.strip() for line in f
-                if line.strip() and not line.startswith(('#', '-'))
-            ]
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith(('#', '-')):
+                    try:
+                        Requirement.parse(line)  # Валидация синтаксиса
+                        requirements.append(line)
+                    except ValueError:
+                        print(f"Ignoring invalid requirement: {line}")
+        return requirements
 
     def check(self):
-        """Проверяет установленные пакеты"""
-        installed = set()
-        for dist in distributions():
-            try:
-                installed.add(dist.metadata['Name'].lower())
-            except PackageNotFoundError:
-                continue
-
+        """Проверяет соответствие версий пакетов"""
         missing = []
         for req in self.requirements:
             try:
                 working_set.require(req)
-            except Exception:
-                pkg_name = Requirement.parse(req).key
-                missing.append(pkg_name)
-
+            except (DistributionNotFound, VersionConflict):
+                missing.append(req)
         return missing
 
     def install(self):
-        """Устанавливает недостающие пакеты"""
-        if not self._check_pypi_availability():
-            return False
-
+        """Устанавливает недостающие пакеты с учётом версий"""
         missing = self.check()
         if not missing:
-            print("All requirements already satisfied")
             return True
 
-        try:
-            setup(
-                name='_temp_requirements_install',
-                version='0.0',
-                install_requires=missing,
-                script_args=['-q', 'bdist_wheel'],
-                options={'bdist_wheel': {'universal': True}}
-            )
-        except Exception as e:
-            print(f"Installation failed: {e}")
+        print(f'У вас не установлены нужные для работы сервера зависимости, такие как:\n'
+               f'{'\n'.join(missing)}.'
+               f'\nНажмите Enter, и программа попробует установить их вместо вас, или прервите её и установите их сами.')
+        input()
+        if not self._check_pypi_availability():
+            print(f'PYPI недоступен. Попробуйте позже, или установите зависимости вручную.')
             return False
 
-        return True
+        try:
+            for dep in missing:
+                print(f'Устанавливаем зависимость {dep}...')
+                pip.main(['install', '--quiet', dep])
+                print(f'Зависимость {dep} установлена.')
+
+            # subprocess.run(
+            #     [sys.executable, '-m', 'pip', 'install', '--quiet'] + missing,
+            #     check=True,
+            #     stdout=subprocess.DEVNULL,
+            #     stderr=subprocess.DEVNULL
+            # )
+            clear_console()
+            return True
+        except Exception as e:
+            print(f"Ошибка установки: {e}")
+            return False
 
     def _check_pypi_availability(self):
         try:
             urllib.request.urlopen('https://pypi.org', timeout=5)
             return True
         except Exception as e:
-            print(f"PyPI connection error: {e}")
+            print(f"Ошибка подключения к PyPI: {e}")
             return False
 
 
 def install():
     installer = RequirementsInstaller()
-    return installer.install()
+    installer.install()
 
 
-def check():
-    return RequirementsInstaller().check()
+install()

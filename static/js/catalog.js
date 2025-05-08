@@ -19,7 +19,7 @@ async function updateCatalog() {
                                 <div>
                                     <h5 class="card-title">${product.name}</h5>
                                     <p class="card-text mb-0">
-                                        ${product.price.toLocaleString()} руб / ${product.weight} г
+                                        ${product.price.toLocaleString()} руб/кг.
                                     </p>
                                 </div>
                                 <a href="/user/about?id=${product.id}" class="btn btn-primary ms-3">Подробнее</a>

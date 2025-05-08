@@ -9,6 +9,7 @@ import werkzeug.security
 from flask import Flask
 
 import Database.Engine.Engine as engine
+from Database.Classes.Admin import Admin
 
 engine.global_init()
 session = engine.create_session()

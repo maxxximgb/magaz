@@ -1,3 +1,4 @@
+from Misc import Setup
 from threading import Thread
 import werkzeug.security
 from flask import Flask, request, session, redirect, make_response, jsonify

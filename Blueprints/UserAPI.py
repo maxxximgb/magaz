@@ -20,7 +20,9 @@ def getCatalog():
 
 @bpUserApi.route('/user/getProduct/<id>', methods=['GET'])
 def getProduct(id):
-    return jsonify(dbSession.query(Product).filter(Product.id == id).first().to_json())
+    product = dbSession.query(Product).filter(Product.id == id).first()
+    if not product: return make_response('Not found', 404)
+    return jsonify(product.to_json())
 
 
 @bpUserApi.route('/user/about', methods=['GET'])

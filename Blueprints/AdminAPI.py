@@ -41,10 +41,11 @@ def newProduct():
     if request.method == 'GET':
         return templates.newProduct.render()
     elif request.method == 'POST':
+        print(int(request.form['price']) / int(request.form['minWeight']) * 1000)
         product = Product(
             name=request.form['name'],
-            weight=int(request.form['weight']),
-            price=int(request.form['price']),
+            minWeight=int(request.form['minWeight']),
+            pricePerKg=float(int(request.form['price']) / int(request.form['minWeight']) * 1000),
             visible='is_visible' in request.form
         )
         dbSession.add(product)
@@ -58,7 +59,7 @@ def newProduct():
 
             ext = file.filename.split('.')[-1]
             file.save(f'{upload_dir}/image.{ext}')
-            product.imageSrc = f'/{upload_dir}/image.{ext}'
+            product.imageSrc = '/'.join(['', 'static', 'img', 'products', str(product_id),  f'image.{ext}'])
 
         dbSession.commit()
         return redirect('/admin/catalog')

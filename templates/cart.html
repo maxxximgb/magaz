@@ -1,5 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container"></div>
+  <div class="container">
+    <section class="mt-5" id="cart-wrapper">
+      <h2>Корзина</h2>
+      <div id="cart-container">
+        <div id="cart-table-wrapper" class="d-none d-md-block">
+          <div class="table-responsive">
+            <table class="table table-borderless align-middle mb-0" id="cart-table">
+              <thead>
+                <tr>
+                  <th scope="col">Фото</th>
+                  <th scope="col">Вес</th>
+                  <th scope="col">Кол-во</th>
+                  <th scope="col">Цена за кг</th>
+                  <th scope="col">Сумма</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="4" class="text-end">Итого:</th>
+                  <th id="cart-total">0</th>
+                  <th></th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <div id="mobile-cards" class="d-block d-md-none"></div>
+
+        <p id="cart-empty" class="text-center my-4 d-none text-muted">
+          Корзина пуста
+        </p>
+      </div>
+    </section>
+  </div>
 {% endblock %}

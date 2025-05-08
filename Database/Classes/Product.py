@@ -8,8 +8,8 @@ class Product(Base):
     id: orm.Mapped[int] = orm.mapped_column(primary_key=True, autoincrement=True)
     imageSrc: orm.Mapped[str] = orm.mapped_column(satypes.String(30), nullable=True)
     name: orm.Mapped[str] = orm.mapped_column(satypes.String(30))
-    weight: orm.Mapped[int] = orm.mapped_column(satypes.Integer(), nullable=True)
-    price: orm.Mapped[int] = orm.mapped_column(satypes.Integer())
+    minWeight: orm.Mapped[int] = orm.mapped_column(satypes.Integer(), nullable=True)
+    pricePerKg: orm.Mapped[float] = orm.mapped_column(satypes.Float())
     visible: orm.Mapped[bool] = orm.mapped_column(satypes.Boolean())
     order_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('Orders.id'), nullable=True)
 
@@ -17,7 +17,7 @@ class Product(Base):
         return {
             "id": self.id,
             "imageSrc": self.imageSrc,
-            "price": self.price,
+            "price": self.pricePerKg,
             "name": self.name,
-            "weight": self.weight
+            "minWeight": self.minWeight
         }

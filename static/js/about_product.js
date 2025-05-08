@@ -2,7 +2,7 @@ let currentProduct = null;
 const domElements = {};
 
 function calculatePricePerGram() {
-    return currentProduct.price / currentProduct.weight;
+    return currentProduct.price / 1000;
 }
 
 async function initProductPage() {
@@ -27,9 +27,6 @@ async function initProductPage() {
     }
 }
 
-function addToCart() {
-
-}
 
 function renderProductLayout() {
     document.getElementById('content').innerHTML = `
@@ -44,12 +41,12 @@ function renderProductLayout() {
                     <div class="d-flex justify-content-between align-items-start mb-4">
                         <h1>${currentProduct.name}</h1>
                         <div class="bg-light p-3 rounded ms-3">
-                            <h4>${currentProduct.price} руб за ${currentProduct.weight} г</h4>
+                            <h4>${currentProduct.price} руб/кг</h4>
                             <small class="text-muted">${calculatePricePerGram().toFixed(2)} руб/г</small>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label h5">Вес (мин. ${currentProduct.weight} г)</label>
+                        <label class="form-label h5">Вес (мин. ${currentProduct.minWeight} г)</label>
                         <input type="number" id="weightInput" class="form-control"
                                min="${currentProduct.weight}" step="0.1" value="${currentProduct.weight}">
                     </div>
@@ -87,13 +84,9 @@ function renderProductLayout() {
             return;
         }
 
-        // Добавляем товар quantity раз с указанным весом
-        for (let i = 0; i < quantity; i++) {
-            cartManager.addToCart(currentProduct.id, weight);
-        }
+        cartManager.addToCart(currentProduct);
     });
 
-    // Инициализируем корзину если еще не инициализирована
     if (!window.cartManager) {
         window.cartManager = new CartManager();
     }
@@ -116,7 +109,7 @@ function addEventListeners() {
 }
 
 function updateCalculations() {
-    const weight = Math.max(currentProduct.weight, parseFloat(domElements.weightInput.value) || currentProduct.weight);
+    const weight = Math.max(currentProduct.minWeight, parseFloat(domElements.weightInput.value) || currentProduct.minWeight);
     const quantity = parseInt(domElements.quantityInput.value);
     const pricePerGram = calculatePricePerGram();
     const total = (weight * pricePerGram * quantity).toFixed(2);
