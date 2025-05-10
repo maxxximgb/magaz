@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row g-4">
+    <div class="col-lg-8">
+      <div class="card">
+        <div id="map" style="height: 400px;"></div>
+        <div class="card-body text-center">
+          <small class="opacity-75">
+            Часы работы: 10:00 - 20:00
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <p id="order_info">Загрузка...</p>
+
+          <form id="make-order" method="post" class="d-grid gap-3">
+            <input
+              type="text"
+              name="fullname"
+              class="form-control form-control-lg bg-opacity-10 rounded-3"
+              placeholder="Введите как к вам обращаться?"
+              required>
+
+            <input
+              type="tel"
+              name="phone"
+              class="form-control form-control-lg bg-opacity-10 rounded-3"
+              placeholder="Введите Ваш номер в РФ"
+              pattern="\+7\s?[0-9]{3}\s?[0-9]{3}-?[0-9]{2}-?[0-9]{2}"
+              required>
+            <input id="products" type="hidden" name="products">
+            <button
+              type="submit"
+              class="btn btn-lg btn-primary rounded-3">
+              Подтвердить
+            </button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="/static/js/make_order.js"></script>
+{% endblock %}

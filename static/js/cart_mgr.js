@@ -1,5 +1,9 @@
 class CartManager {
   constructor() {
+    if (CartManager.instance) {
+      return CartManager.instance;
+    }
+    CartManager.instance = this;
     this.cart = JSON.parse(localStorage.getItem('cart')) || {};
     // Элементы
     this.els = {
@@ -9,6 +13,7 @@ class CartManager {
       mobileCards: document.getElementById('mobile-cards'),
       emptyMsg: document.getElementById('cart-empty'),
       totalEl: document.getElementById('cart-total'),
+      orderBtn: document.getElementById('order_btn'),
     }
     this.updateCartBadge();
     this.initEventListeners();
@@ -58,8 +63,6 @@ class CartManager {
 
         if (changed) needRerender = true;
       } catch (err) {
-        console.log(err);
-        alert(err);
         delete this.cart[key];
         this.showAlert(
           `Продукт ${item.id} больше не доступен и был удалён из корзины`,
@@ -229,6 +232,7 @@ class CartManager {
 
   showEmpty() {
     this.els.table.innerHTML = '';
+    this.els.orderBtn.style.visibility = "hidden"
     this.els.tableWrapper.classList.add('d-none');
     this.els.mobileCards.classList.add('d-none');
     this.els.emptyMsg.classList.remove('d-none');
@@ -252,6 +256,26 @@ class CartManager {
       }
     });
   }
+
+  static getInstance() {
+    return CartManager.instance || new CartManager();
+  }
+
+  getTotalQuantity() {
+    return Object.values(this.cart).reduce(
+      (sum, item) => sum + item.quantity,
+      0
+    );
+  }
+
+  getTotalSum() {
+    return Object.values(this.cart).reduce(
+      (sum, item) => sum + (item.pricePerKg / 1000) * item.weight * item.quantity,
+      0
+    );
+  }
 }
 
-document.addEventListener('DOMContentLoaded', () => new CartManager());
+document.addEventListener('DOMContentLoaded', () => {
+  window.cartManager = new CartManager();
+});

@@ -11,7 +11,6 @@ class Product(Base):
     minWeight: orm.Mapped[int] = orm.mapped_column(satypes.Integer(), nullable=True)
     pricePerKg: orm.Mapped[float] = orm.mapped_column(satypes.Float())
     visible: orm.Mapped[bool] = orm.mapped_column(satypes.Boolean())
-    order_id: orm.Mapped[int] = orm.mapped_column(sqlalchemy.ForeignKey('Orders.id'), nullable=True)
 
     def to_json(self):
         return {

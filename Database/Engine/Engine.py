@@ -8,6 +8,7 @@ from Database.Classes.Admin import Admin
 from Database.Classes.Order import Order
 from Database.Classes.Product import Product
 from Database.Classes.Promocode import Promocode
+from Database.Classes.OrderedProduct import OrderedProduct
 
 def global_init():
     global __factory

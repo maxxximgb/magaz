@@ -21,3 +21,4 @@ catalog_edit = Template('catalog_edit.html', {'title': 'Редактор кат�
 newProduct = Template('product_edit.html', {'title': 'Добавление продукта'})
 about_product = Template('about_product.html', {'title': 'Информация о продукте'})
 cart = Template('cart.html', {'title': 'Корзина'})
+make_order = Template('make_order.html', {'title': 'Офромление заказа'})

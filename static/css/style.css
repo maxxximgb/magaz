@@ -1,9 +1,3 @@
-.container > * {
-    display: block;
-    margin: 0 auto;
-}
-
-
 .icon {
     width: 10%;
     height: 10%;
